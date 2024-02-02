@@ -2,12 +2,13 @@
 
 A simple todo-list application that allows users to create, view, update, and delete tasks.
 
-## Used Tech Stack
+## Used Technologies
 
 - Loopback 4
 - TypeScript
 - MongoDB
 - Node.js
+- Docker
 
 ## Setting up the Project and MongoDB
 
