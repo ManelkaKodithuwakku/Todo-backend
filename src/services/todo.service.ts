@@ -10,11 +10,20 @@ export class TodoService {
     private todoRepository: TodoRepository,
   ) { }
 
+  /**
+   * Retrieves a list of todos based on pagination parameters.
+   *
+   * @param {number} pageIndex - Page index (starting from 0) for pagination.
+   * @param {number} pageSize - Number of todos to include on each page.
+   *
+   * @returns {Partial<Todo>[]} - List of todos with limited fields (title, description, isComplete).
+   */
   async getTodoList(pageIndex: number, pageSize: number) {
 
     let skipCount = pageIndex * pageSize;
     let limitCount = pageSize;
 
+    // aggregate and get all todos
     let content: Partial<Todo>[] = await this.todoRepository.aggregate([
       {
         $skip: skipCount,
@@ -31,6 +40,7 @@ export class TodoService {
       }
     ])
 
+    // check return value is array and its length greater than 0
     if (Array.isArray(content) && content.length > 0) {
       return content;
     } else return []
