@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: my-mongo-container
+    image: mongo:6.0.13
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 78scc5656vfdbn17
+      MONGO_INITDB_DATABASE: mydatabase
+    volumes:
+      - ./mongoData:/data/db
+    ports:
+      - "37017:27017"
+
+# db.createUser({
+#   user: "todoUser",
+#   pwd: "78945612358",
+#   roles: ["readWrite", "dbAdmin"]
+# })
+
+# mongosh --username todoUser --password 78945612358 --authenticationDatabase mydatabase --host localhost --port 37017
+
